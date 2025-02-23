@@ -1,18 +1,15 @@
 // Start GLobal Variables
 // End Global Variables
 
-const currTemp = document.getElementById("hCurrTemp")
-const currHum = document.getElementById("hCurrHum")
-const currIcon = document.getElementById("pCurrIcon")
 
 
-document.querySelector('#btnLocation').addEventListener('click', function () {
-  // adapted from https://www.w3schools.com/html/html5_geolocation.asp
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getWeather)
-  }
-  // TODO add fallback if location is denied
-})
+// document.querySelector('#btnLocation').addEventListener('click', function () {
+//   // adapted from https://www.w3schools.com/html/html5_geolocation.asp
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(getWeather)
+//   }
+//   // TODO add fallback if location is denied
+// })
 
 if (localStorage.getItem('Latitude') && localStorage.getItem('Longitude')) {
   navigator.geolocation.getCurrentPosition(getWeather)
@@ -45,9 +42,12 @@ async function getWeather(position) {
     // if (objData.length > 0) {
     if (objData) {
       console.log(objData)
-      currTemp.innerHTML = objData.current.temperature_2m + objData.current_units.temperature_2m
-      currHum.innerHTML = objData.current.relative_humidity_2m + objData.current_units.relative_humidity_2m
+      const currTemp = document.getElementById("hCurrTemp")
+      const currHum = document.getElementById("hCurrHum")
+      currTemp.innerHTML += objData.current.temperature_2m + objData.current_units.temperature_2m
+      currHum.innerHTML += objData.current.relative_humidity_2m + objData.current_units.relative_humidity_2m
       // currIcon.innerHTML = "Current Weather: " + objData.current_weather.weathercode
+      setIcon(objData.current.weather_code)
     } else {
       //Sweetalert for failure
       Swal.fire({
@@ -59,5 +59,65 @@ async function getWeather(position) {
   } catch (objError) {
     console.log('Error fetching objData', objError)
     //Create a Sweetalert for user indicating failure
+  }
+}
+
+async function setIcon(weatherCode) {
+  const currIcon = document.getElementById("oCurrIcon")
+  // referenced https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
+  const currDate = new Date()
+  const currTime = currDate.getHours()
+  // for testing icons
+  // weatherCode = 86
+  if (weatherCode == 0) {
+    if (currTime > 6 && currTime < 18)
+      currIcon.setAttribute('data', './images/weather-icons/0-day.svg');
+    else if (currTime < 6 || currTime > 18)
+      currIcon.setAttribute('data', './images/weather-icons/0-night.svg');
+  }
+  else if (weatherCode == 1) {
+    if (currTime > 6 && currTime < 18)
+      currIcon.setAttribute('data', './images/weather-icons/1-day.svg');
+    else if (currTime < 6 || currTime > 18)
+      currIcon.setAttribute('data', './images/weather-icons/1-night.svg');
+  }
+  else if (weatherCode == 2) {
+    if (currTime > 6 && currTime < 18)
+      currIcon.setAttribute('data', './images/weather-icons/2-day.svg');
+    else if (currTime < 6 || currTime > 18)
+      currIcon.setAttribute('data', './images/weather-icons/2-night.svg');
+  }
+  else if (weatherCode == 3) {
+    if (currTime > 6 && currTime < 18)
+      currIcon.setAttribute('data', './images/weather-icons/3-day.svg');
+    else if (currTime < 6 || currTime > 18)
+      currIcon.setAttribute('data', './images/weather-icons/3-night.svg');
+  }
+  else if (weatherCode == 45 || weatherCode == 48) {
+    currIcon.setAttribute('data', './images/weather-icons/45-48.svg');
+  }
+  else if (weatherCode == 51 || weatherCode == 56) {
+    currIcon.setAttribute('data', './images/weather-icons/51-56.svg');
+  }
+  else if (weatherCode == 53 || weatherCode == 57 || weatherCode == 61 || weatherCode == 66 || weatherCode == 80) {
+    currIcon.setAttribute('data', './images/weather-icons/53-57-61-66-80.svg');
+  }
+  else if (weatherCode == 55 || weatherCode == 63 || weatherCode == 81) {
+    currIcon.setAttribute('data', './images/weather-icons/55-63-81.svg');
+  }
+  else if (weatherCode == 65 || weatherCode == 67 || weatherCode == 82) {
+    currIcon.setAttribute('data', './images/weather-icons/65-67-82.svg');
+  }
+  else if (weatherCode == 71 || weatherCode == 77) {
+    currIcon.setAttribute('data', './images/weather-icons/71-77.svg');
+  }
+  else if (weatherCode == 73 || weatherCode == 85) {
+    currIcon.setAttribute('data', './images/weather-icons/73-85.svg');
+  }
+  else if (weatherCode == 75 || weatherCode == 86) {
+    currIcon.setAttribute('data', './images/weather-icons/75-86.svg');
+  }
+  else if (weatherCode == 95 || weatherCode == 96 || weatherCode == 99) {
+    currIcon.setAttribute('data', './images/weather-icons/95-96-99.svg');
   }
 }

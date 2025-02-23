@@ -1,0 +1,4 @@
+/* referenced https: //developer.mozilla.org/en-US/docs/Web/CSS/filter#browser_compatibility */
+.black-icon {
+  filter: invert(1) drop-shadow(0px 0px 2px black);
+}
