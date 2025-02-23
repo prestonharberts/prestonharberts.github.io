@@ -35,7 +35,6 @@
               </th>
             </tr>
           </table>
-          <div id="map-canvas" style="width: 600px; height: 400px;"></div>
         </div>
       </div>
     </div>
@@ -70,22 +69,14 @@
       google: {
         version: "3",
         key: "AIzaSyDKFxPY-XZc9ErXvGPdjGqR3hMNyE_yg28",
-        https: true
       }
     });
 
     window.onload = function () {
       var options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumWait: 10000,     // max wait time for desired accuracy
-        maximumAge: 0,          // disable cache
-        desiredAccuracy: 30,    // meters
+        enableHighAccuracy: false,
         fallbackToIP: true,     // fallback to IP if Geolocation fails or rejected
         addressLookup: true,    // requires Google API key if true
-        timezone: true,         // requires Google API key if true
-        map: "map-canvas",      // interactive map element id (or options object)
-        staticMap: true         // get a static map image URL (boolean or options object)
       };
       geolocator.locate(options, function (err, location) {
         if (err) return console.log(err);
