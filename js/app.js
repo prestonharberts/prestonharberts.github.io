@@ -41,10 +41,13 @@ async function getWeather(position) {
     // ChatGPT helped me figure out that this if statement was incorrect
     // if (objData.length > 0) {
     if (objData) {
-      console.log(objData)
+      // test to see if data is received
+      // console.log(objData)
       const currTemp = document.getElementById("hCurrTemp")
       const currHum = document.getElementById("hCurrHum")
+      currTemp.innerHTML = `<img src="./images/thermometer.svg" class="black-icon" alt="Humidity">`
       currTemp.innerHTML += objData.current.temperature_2m + objData.current_units.temperature_2m
+      currHum.innerHTML = `<img src="./images/humidity.svg" class="black-icon" alt="Humidity">`
       currHum.innerHTML += objData.current.relative_humidity_2m + objData.current_units.relative_humidity_2m
       // currIcon.innerHTML = "Current Weather: " + objData.current_weather.weathercode
       setIcon(objData.current.weather_code)
