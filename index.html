@@ -81,6 +81,8 @@
       geolocator.locate(options, function (err, location) {
         if (err) return console.log(err);
         console.log(location);
+        const hCity = document.getElementById("hCity")
+        hCity.innerHTML += location.address.city
       });
       // geolocator.locateByIP(options, function (err, location) {
       //   console.log(location.address.city);
