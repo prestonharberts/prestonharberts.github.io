@@ -5,3 +5,10 @@
   width: 40px;
   height: 25px;
 }
+
+.city {
+  filter: drop-shadow(2px 2px 4px white);
+  /* padding-right: 5px;
+  width: 40px;
+  height: 25px; */
+}

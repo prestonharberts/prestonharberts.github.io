@@ -12,8 +12,7 @@
     body {
       background-repeat: no-repeat, repeat;
       background-image: url("./images/wallpaper.webp"), url("./images/black.jpg");
-      /* referenced https://www.w3schools.com/cssref/pr_background-blend-mode.php */
-      background-blend-mode: color-dodge;
+      background-blend-mode: color-burn;
       background-size: cover, cover;
     }
   </style>
@@ -22,15 +21,14 @@
 
 <body class="bg-dark">
   <div class="d-flex vh-100 justify-content-center align-items-center">
-    <!-- referenced https://getbootstrap.com/docs/5.0/utilities/sizing/ -->
-    <div class="card w-auto" id="divDashboard">
-      <h1 class="text-center my-3"><i>WeatherNet</i></h1>
+    <div class="card col-8 col-md-4 col-lg-4 mx-auto" id="divDashboard">
+      <h1 class="text-center my-3">WeatherNet</h1>
       <div class="card-body">
         <!-- <button class="btn btn-primary col-12 mb-4" type="button" id="btnLocation" style="z-index: 1; position: relative;">Allow Location Permissions</button> -->
         <!-- refereced https://www.svgator.com/help/getting-started/how-to-add-animated-svg-to-your-website -->
         <!-- icons from https://www.amcharts.com/free-animated-svg-weather-icons/ -->
         <div class="d-flex justify-content-center align-items-center">
-          <object id="oCurrIcon" type="image/svg+xml" data="" class="" style="transform: scale(4); position: block;"></object>
+          <object id="oCurrIcon" type="image/svg+xml" data="" class="py-1" style="transform: scale(5); position: block;"></object>
         </div>
         <h2 id="hCity" class="text-center city" style="z-index: 1; position: relative;"></h2>
         <!-- referenced https://getbootstrap.com/docs/4.0/components/card/#background-and-color -->
@@ -41,10 +39,10 @@
           <table width="100%">
             <tr>
               <th>
-                <h4 id="hCurrTemp" class="px-2"></h4>
+                <h4 id="hCurrTemp" class=""></h4>
               </th>
               <th>
-                <h4 id="hCurrHum" class="text-end px-2"></h4>
+                <h4 id="hCurrHum" class="text-end"></h4>
               </th>
             </tr>
           </table>
@@ -63,7 +61,7 @@
       <a class="text-light" href="https://www.open-meteo.com/">Open-Meteo.com</a>,
       <a class="text-light" href="https://www.amcharts.com/">amCharts</a>,
       <a class="text-light" href="https://www.svgrepo.com/">SVG Repo</a>,
-      <a class="text-light" href="https://zebreus.github.io/all-gnome-backgrounds">GNOME</a>
+      <a class="" text-light" href="https://zebreus.github.io/all-gnome-backgrounds">GNOME</a>
       <!-- referenced https://wiki.creativecommons.org/wiki/Recommended_practices_for_attribution#Examples_of_attribution -->
       CC BY 4.0
     </div>

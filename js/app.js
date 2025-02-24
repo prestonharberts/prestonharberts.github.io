@@ -11,9 +11,9 @@
 //   // TODO add fallback if location is denied
 // })
 
-if (localStorage.getItem('Latitude') && localStorage.getItem('Longitude')) {
-  navigator.geolocation.getCurrentPosition(getWeather)
-}
+// if (localStorage.getItem('Latitude') && localStorage.getItem('Longitude')) {
+navigator.geolocation.getCurrentPosition(getWeather)
+// }
 
 async function getWeather(position) {
   localStorage.setItem('Latitude', position.coords.latitude)
@@ -45,9 +45,9 @@ async function getWeather(position) {
       // console.log(objData)
       const currTemp = document.getElementById("hCurrTemp")
       const currHum = document.getElementById("hCurrHum")
-      currTemp.innerHTML = `<img src="./images/thermometer.svg" class="black-icon" alt="Humidity">`
+      currTemp.innerHTML = `<img src="./images/thermometer.svg" class="black-icon" alt="thermometer icon">`
       currTemp.innerHTML += objData.current.temperature_2m + objData.current_units.temperature_2m
-      currHum.innerHTML = `<img src="./images/humidity.svg" class="black-icon" alt="Humidity">`
+      currHum.innerHTML = `<img src="./images/humidity.svg" class="black-icon" alt="humidity icon">`
       currHum.innerHTML += objData.current.relative_humidity_2m + objData.current_units.relative_humidity_2m
       // currIcon.innerHTML = "Current Weather: " + objData.current_weather.weathercode
       setIcon(objData.current.weather_code)
@@ -71,56 +71,82 @@ async function setIcon(weatherCode) {
   const currDate = new Date()
   const currTime = currDate.getHours()
   // for testing icons
-  // weatherCode = 86
+  weatherCode = 55
   if (weatherCode == 0) {
-    if (currTime > 6 && currTime < 18)
+    if (currTime > 6 && currTime < 18) {
       currIcon.setAttribute('data', './images/weather-icons/0-day.svg');
-    else if (currTime < 6 || currTime > 18)
-      currIcon.setAttribute('data', './images/weather-icons/0-night.svg');
+      currIcon.style["padding"] = "6px 0px 16px 0px"
+    }
+    else if (currTime < 6 || currTime > 18) {
+      currIcon.setAttribute('data', './images/weather-icons/3-night.svg');
+      currIcon.style["padding"] = "8px 0px 16px 0px"
+    }
   }
   else if (weatherCode == 1) {
-    if (currTime > 6 && currTime < 18)
+    if (currTime > 6 && currTime < 18) {
       currIcon.setAttribute('data', './images/weather-icons/1-day.svg');
-    else if (currTime < 6 || currTime > 18)
+      currIcon.style["padding"] = "24px 0px 24px 0px"
+    }
+    else if (currTime < 6 || currTime > 18) {
       currIcon.setAttribute('data', './images/weather-icons/1-night.svg');
+      currIcon.style["padding"] = "22px 0px 22px 0px"
+    }
+    // referenced https://stackoverflow.com/questions/5191478/changing-element-style-attribute-dynamically-using-javascript
   }
   else if (weatherCode == 2) {
-    if (currTime > 6 && currTime < 18)
+    if (currTime > 6 && currTime < 18) {
       currIcon.setAttribute('data', './images/weather-icons/2-day.svg');
-    else if (currTime < 6 || currTime > 18)
+      currIcon.style["padding"] = "24px 0px 24px 0px"
+    }
+    else if (currTime < 6 || currTime > 18) {
       currIcon.setAttribute('data', './images/weather-icons/2-night.svg');
+      currIcon.style["padding"] = "22px 0px 22px 0px"
+    }
   }
   else if (weatherCode == 3) {
-    if (currTime > 6 && currTime < 18)
+    if (currTime > 6 && currTime < 18) {
       currIcon.setAttribute('data', './images/weather-icons/3-day.svg');
-    else if (currTime < 6 || currTime > 18)
+      currIcon.style["padding"] = "24px 0px 24px 0px"
+    }
+    else if (currTime < 6 || currTime > 18) {
       currIcon.setAttribute('data', './images/weather-icons/3-night.svg');
+      currIcon.style["padding"] = "22px 0px 22px 0px"
+    }
   }
   else if (weatherCode == 45 || weatherCode == 48) {
     currIcon.setAttribute('data', './images/weather-icons/45-48.svg');
+    currIcon.style["padding"] = "22px 0px 22px 0px"
   }
   else if (weatherCode == 51 || weatherCode == 56) {
     currIcon.setAttribute('data', './images/weather-icons/51-56.svg');
+    currIcon.style["padding"] = "20px 0px 38px 0px"
   }
   else if (weatherCode == 53 || weatherCode == 57 || weatherCode == 61 || weatherCode == 66 || weatherCode == 80) {
     currIcon.setAttribute('data', './images/weather-icons/53-57-61-66-80.svg');
+    currIcon.style["padding"] = "20px 0px 38px 0px"
   }
   else if (weatherCode == 55 || weatherCode == 63 || weatherCode == 81) {
     currIcon.setAttribute('data', './images/weather-icons/55-63-81.svg');
+    currIcon.style["padding"] = "20px 0px 38px 0px"
   }
   else if (weatherCode == 65 || weatherCode == 67 || weatherCode == 82) {
     currIcon.setAttribute('data', './images/weather-icons/65-67-82.svg');
+    currIcon.style["padding"] = "22px 0px 42px 0px"
   }
   else if (weatherCode == 71 || weatherCode == 77) {
     currIcon.setAttribute('data', './images/weather-icons/71-77.svg');
+    currIcon.style["padding"] = "22px 0px 42px 0px"
   }
   else if (weatherCode == 73 || weatherCode == 85) {
     currIcon.setAttribute('data', './images/weather-icons/73-85.svg');
+    currIcon.style["padding"] = "22px 0px 42px 0px"
   }
   else if (weatherCode == 75 || weatherCode == 86) {
     currIcon.setAttribute('data', './images/weather-icons/75-86.svg');
+    currIcon.style["padding"] = "22px 0px 42px 0px"
   }
   else if (weatherCode == 95 || weatherCode == 96 || weatherCode == 99) {
     currIcon.setAttribute('data', './images/weather-icons/95-96-99.svg');
+    currIcon.style["padding"] = "20px 0px 34px 2px"
   }
 }
