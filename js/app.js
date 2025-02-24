@@ -57,29 +57,29 @@ async function setIcon(weatherCode) {
   const currDate = new Date()
   const currTime = currDate.getHours()
   // for testing icons
-  // weatherCode = 55
+  // weatherCode = 1
   if (weatherCode == 0) {
     if (currTime > 6 && currTime < 18) {
       currIcon.setAttribute('data', './images/weather-icons/0-day.svg');
       currIcon.setAttribute('alt', 'clear day icon')
-      currIcon.style["padding"] = "6px 0px 16px 0px"
+      currIcon.style["padding"] = "10px 0px 18px 0px"
     }
     else if (currTime < 6 || currTime > 18) {
-      currIcon.setAttribute('data', './images/weather-icons/3-night.svg');
+      currIcon.setAttribute('data', './images/weather-icons/0-night.svg');
       currIcon.setAttribute('alt', 'clear night icon')
-      currIcon.style["padding"] = "8px 0px 16px 0px"
+      currIcon.style["padding"] = "8px 0px 18px 0px"
     }
   }
   else if (weatherCode == 1) {
     if (currTime > 6 && currTime < 18) {
       currIcon.setAttribute('data', './images/weather-icons/1-day.svg');
       currIcon.setAttribute('alt', 'slightly cloudy day icon')
-      currIcon.style["padding"] = "24px 0px 24px 0px"
+      currIcon.style["padding"] = "24px 0px 24px 6px"
     }
     else if (currTime < 6 || currTime > 18) {
       currIcon.setAttribute('data', './images/weather-icons/1-night.svg');
       currIcon.setAttribute('alt', 'slighly cloudy night icon')
-      currIcon.style["padding"] = "22px 0px 22px 0px"
+      currIcon.style["padding"] = "24px 6px 24px 0px"
     }
     // referenced https://stackoverflow.com/questions/5191478/changing-element-style-attribute-dynamically-using-javascript
   }
@@ -87,24 +87,24 @@ async function setIcon(weatherCode) {
     if (currTime > 6 && currTime < 18) {
       currIcon.setAttribute('data', './images/weather-icons/2-day.svg');
       currIcon.setAttribute('alt', 'moderately cloudy day icon')
-      currIcon.style["padding"] = "24px 0px 24px 0px"
+      currIcon.style["padding"] = "24px 0px 24px 6px"
     }
     else if (currTime < 6 || currTime > 18) {
       currIcon.setAttribute('data', './images/weather-icons/2-night.svg');
       currIcon.setAttribute('alt', 'moderately cloudy night icon')
-      currIcon.style["padding"] = "22px 0px 22px 0px"
+      currIcon.style["padding"] = "24px 6px 24px 0px"
     }
   }
   else if (weatherCode == 3) {
     if (currTime > 6 && currTime < 18) {
       currIcon.setAttribute('data', './images/weather-icons/3-day.svg');
       currIcon.setAttribute('alt', 'very cloudy day icon')
-      currIcon.style["padding"] = "24px 0px 24px 0px"
+      currIcon.style["padding"] = "24px 0px 24px 6px"
     }
     else if (currTime < 6 || currTime > 18) {
       currIcon.setAttribute('data', './images/weather-icons/3-night.svg');
       currIcon.setAttribute('alt', 'very cloudy night icon')
-      currIcon.style["padding"] = "22px 0px 22px 0px"
+      currIcon.style["padding"] = "24px 6px 24px 0px"
     }
   }
   else if (weatherCode == 45 || weatherCode == 48) {
@@ -150,6 +150,6 @@ async function setIcon(weatherCode) {
   else if (weatherCode == 95 || weatherCode == 96 || weatherCode == 99) {
     currIcon.setAttribute('data', './images/weather-icons/95-96-99.svg');
     currIcon.setAttribute('alt', 'severe thunderstorm icon')
-    currIcon.style["padding"] = "20px 0px 34px 2px"
+    currIcon.style["padding"] = "24px 0px 38px 2px"
   }
 }
